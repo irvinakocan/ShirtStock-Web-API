@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using ShirtStock_Web_API.Models.Validations;
 
 namespace ShirtStock_Web_API.Models
 {
@@ -13,6 +14,7 @@ namespace ShirtStock_Web_API.Models
 		[Required]
 		public string Color { get; set; }
 
+		[Shirt_EnsureCorrectSizing]
 		public int? Size { get; set; }
 
 		[Required]
