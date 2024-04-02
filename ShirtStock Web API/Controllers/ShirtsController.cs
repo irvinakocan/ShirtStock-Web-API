@@ -1,11 +1,40 @@
 ﻿using System;
+using Microsoft.AspNetCore.Mvc;
+
 namespace ShirtStock_Web_API.Controllers
 {
-	public class ShirtsController
+	[ApiController]
+	[Route("api/[controller]")]
+	public class ShirtsController: ControllerBase
 	{
-		public ShirtsController()
+		[HttpGet]
+		public string GetShirts()
 		{
+			return "Reading all the shirts";
+		}
+
+		[HttpGet("{id}")]
+        public string GetShirtById(int id)
+		{
+			return $"Reading shirt: {id}";
+		}
+
+		[HttpPost]
+		public string CreateShirt()
+		{
+			return "Creating a shirt";
+		}
+
+		[HttpPut("{id}")]
+		public string UpdateShirt(int id)
+		{
+			return $"Updating shirt: {id}";
+		}
+
+		[HttpDelete("{id}")]
+		public string DeleteShirt(int id)
+		{
+			return $"Deleting shirt: {id}";
 		}
 	}
 }
-
