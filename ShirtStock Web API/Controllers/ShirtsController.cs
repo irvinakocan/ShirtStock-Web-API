@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using ShirtStock_Web_API.Models;
 
 namespace ShirtStock_Web_API.Controllers
 {
@@ -20,7 +21,7 @@ namespace ShirtStock_Web_API.Controllers
 		}
 
 		[HttpPost]
-		public string CreateShirt()
+		public string CreateShirt([FromBody] Shirt shirt)
 		{
 			return "Creating a shirt";
 		}
