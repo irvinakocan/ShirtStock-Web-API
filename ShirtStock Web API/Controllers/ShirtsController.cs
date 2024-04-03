@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using ShirtStock_Web_API.Models;
+using ShirtStock_Web_API.Models.Repositories;
 
 namespace ShirtStock_Web_API.Controllers
 {
@@ -9,33 +10,40 @@ namespace ShirtStock_Web_API.Controllers
 	public class ShirtsController: ControllerBase
 	{
 		[HttpGet]
-		public string GetShirts()
+		public IActionResult GetShirts()
 		{
-			return "Reading all the shirts";
+			return Ok("Reading all the shirts");
 		}
 
 		[HttpGet("{id}")]
-        public string GetShirtById(int id)
+        public IActionResult GetShirtById(int id)
 		{
-			return $"Reading shirt: {id}";
+			if (id <= 0)
+				return BadRequest();
+
+			var shirt = ShirtRepository.GetShirtById(id);
+			if (shirt == null)
+				return NotFound();
+
+			return Ok(shirt);
 		}
 
 		[HttpPost]
-		public string CreateShirt([FromBody] Shirt shirt)
+		public IActionResult CreateShirt([FromBody] Shirt shirt)
 		{
-			return "Creating a shirt";
+			return Ok("Creating a shirt");
 		}
 
 		[HttpPut("{id}")]
-		public string UpdateShirt(int id)
+		public IActionResult UpdateShirt(int id)
 		{
-			return $"Updating shirt: {id}";
+			return Ok($"Updating shirt: {id}");
 		}
 
 		[HttpDelete("{id}")]
-		public string DeleteShirt(int id)
+		public IActionResult DeleteShirt(int id)
 		{
-			return $"Deleting shirt: {id}";
+			return Ok($"Deleting shirt: {id}");
 		}
 	}
 }
