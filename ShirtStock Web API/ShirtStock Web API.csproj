@@ -15,6 +15,8 @@
     <None Remove="Models\Validations\" />
     <None Remove="Models\Repositories\" />
     <None Remove="Filters\" />
+    <None Remove="Filters\ExceptionFilters\" />
+    <None Remove="Filters\ActionFilters\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -22,5 +24,7 @@
     <Folder Include="Models\Validations\" />
     <Folder Include="Models\Repositories\" />
     <Folder Include="Filters\" />
+    <Folder Include="Filters\ExceptionFilters\" />
+    <Folder Include="Filters\ActionFilters\" />
   </ItemGroup>
 </Project>
