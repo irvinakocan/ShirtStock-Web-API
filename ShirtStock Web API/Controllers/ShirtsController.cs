@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using ShirtStock_Web_API.Filters;
 using ShirtStock_Web_API.Models;
 using ShirtStock_Web_API.Models.Repositories;
 
@@ -16,16 +17,10 @@ namespace ShirtStock_Web_API.Controllers
 		}
 
 		[HttpGet("{id}")]
+		[Shirts_ValidateShirtIdFilter]
         public IActionResult GetShirtById(int id)
 		{
-			if (id <= 0)
-				return BadRequest();
-
-			var shirt = ShirtRepository.GetShirtById(id);
-			if (shirt == null)
-				return NotFound();
-
-			return Ok(shirt);
+			return Ok(ShirtRepository.GetShirtById(id));
 		}
 
 		[HttpPost]
