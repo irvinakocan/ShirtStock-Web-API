@@ -35,21 +35,7 @@ namespace ShirtStock_Web_API.Filters
                     };
                     context.Result = new BadRequestObjectResult(problemDetails);
                 }
-            }
-
-            
+            } 
         }
     }
 }
-
-
-
-/*
- * 
- * if (shirt == null)
-				return BadRequest();
-
-			var existingShirt = ShirtRepository.GetShirtByProperties(shirt.Brand, shirt.Color, shirt.Size, shirt.Gender);
-			if (existingShirt != null)
-				return BadRequest();
- */
