@@ -34,9 +34,22 @@ namespace ShirtStock_Web_API.Controllers
 		}
 
 		[HttpPut("{id}")]
-		public IActionResult UpdateShirt(int id)
+		[Shirts_ValidateShirtIdFilter]
+		[Shirts_ValidateUpdateShirtFilter]
+		public IActionResult UpdateShirt(int id, Shirt shirt)
 		{
-			return Ok($"Updating shirt: {id}");
+			// We have to try-catch because shirt can be deleted in the meantime
+			try
+			{
+                ShirtRepository.UpdateShirt(shirt);
+            }
+			catch
+			{
+				return NotFound();
+				throw;
+			}
+			
+			return NoContent();
 		}
 
 		[HttpDelete("{id}")]
