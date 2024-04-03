@@ -13,10 +13,12 @@
     <None Remove="Controllers\" />
     <None Remove="Models\" />
     <None Remove="Models\Validations\" />
+    <None Remove="Models\Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
     <Folder Include="Models\Validations\" />
+    <Folder Include="Models\Repositories\" />
   </ItemGroup>
 </Project>
