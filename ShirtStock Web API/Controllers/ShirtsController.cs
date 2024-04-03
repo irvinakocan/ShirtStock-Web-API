@@ -35,9 +35,10 @@ namespace ShirtStock_Web_API.Controllers
 		}
 
 		[HttpPut("{id}")]
-		//[Shirts_ValidateShirtIdFilter]
+		[Shirts_ValidateShirtIdFilter]
 		[Shirts_ValidateUpdateShirtFilter]
 		[Shirts_HandleUpdateShirtExceptionsFilter]
+		// The Exception Filter in this case is going to be triggered only if ValidateShirtIdFilter is not active, cause we are mocking data
 		public IActionResult UpdateShirt(int id, Shirt shirt)
 		{
             ShirtRepository.UpdateShirt(shirt);
@@ -45,9 +46,12 @@ namespace ShirtStock_Web_API.Controllers
 		}
 
 		[HttpDelete("{id}")]
-		public IActionResult DeleteShirt(int id)
+        [Shirts_ValidateShirtIdFilter]
+        public IActionResult DeleteShirt(int id)
 		{
-			return Ok($"Deleting shirt: {id}");
+			var shirt = ShirtRepository.GetShirtById(id);
+			ShirtRepository.DeleteShirt(id);
+			return Ok(shirt);
 		}
 	}
 }

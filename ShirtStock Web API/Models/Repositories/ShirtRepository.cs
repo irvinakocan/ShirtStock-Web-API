@@ -52,6 +52,15 @@ namespace ShirtStock_Web_API.Models.Repositories
             shirtToUpdate.Price = shirt.Price;
             shirtToUpdate.Size = shirt.Size;
         }
+
+        public static void DeleteShirt(int id)
+        {
+            var shirtToDelete = GetShirtById(id);
+            if (shirtToDelete != null)
+            {
+                shirts.Remove(shirtToDelete);
+            }
+        }
     }
 }
 
