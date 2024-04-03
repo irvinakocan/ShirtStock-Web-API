@@ -11,6 +11,11 @@ namespace ShirtStock_Web_API.Models.Repositories
             new Shirt {ShirtId = 4, Brand = "Redtape", Color = "green", Gender = "woman", Price = 99, Size = 10}
         };
 
+        public static List<Shirt> GetShirts()
+        {
+            return shirts;
+        }
+
         public static bool ShirtExists(int id)
         {
             return shirts.Any(x => x.ShirtId == id);
