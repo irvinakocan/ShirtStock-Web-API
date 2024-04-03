@@ -24,9 +24,13 @@ namespace ShirtStock_Web_API.Controllers
 		}
 
 		[HttpPost]
+		[Shirts_ValidateCreateShirtFilter]
 		public IActionResult CreateShirt([FromBody] Shirt shirt)
 		{
-			return Ok("Creating a shirt");
+			ShirtRepository.CreateShirt(shirt);
+			return CreatedAtAction(nameof(GetShirtById),
+				new { id = shirt.ShirtId},
+				shirt);
 		}
 
 		[HttpPut("{id}")]

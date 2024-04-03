@@ -25,6 +25,23 @@ namespace ShirtStock_Web_API.Models.Repositories
         {
             return shirts.FirstOrDefault(x => x.ShirtId == id);
         }
+
+        public static Shirt? GetShirtByProperties(string brand, string color, int? size, string gender)
+        {
+            return shirts.FirstOrDefault(x =>
+            x.Brand.Equals(brand, StringComparison.OrdinalIgnoreCase) &&
+            x.Color.Equals(color, StringComparison.OrdinalIgnoreCase) &&
+            x.Size.HasValue && size.HasValue && x.Size == size.Value &&
+            x.Gender.Equals(gender, StringComparison.OrdinalIgnoreCase)
+            );
+        }
+
+        public static void CreateShirt(Shirt shirt)
+        {
+            int maxId = shirts.Max(x => x.ShirtId);
+            shirt.ShirtId = maxId + 1;
+            shirts.Add(shirt);
+        }
     }
 }
 
