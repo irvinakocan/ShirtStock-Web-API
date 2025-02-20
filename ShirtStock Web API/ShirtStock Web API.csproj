@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ShirtStock_Web_API</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+  <ItemGroup>
+    <None Remove="Controllers\" />
+    <None Remove="Models\" />
+    <None Remove="Models\Validations\" />
+    <None Remove="Models\Repositories\" />
+    <None Remove="Filters\" />
+    <None Remove="Filters\ExceptionFilters\" />
+    <None Remove="Filters\ActionFilters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Validations\" />
+    <Folder Include="Models\Repositories\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Filters\ExceptionFilters\" />
+    <Folder Include="Filters\ActionFilters\" />
+  </ItemGroup>
+</Project>
